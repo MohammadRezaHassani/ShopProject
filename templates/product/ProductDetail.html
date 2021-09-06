@@ -1,0 +1,81 @@
+{% extends 'shared/main_navbar.html' %}
+{% block extra_content %}
+    <div class="container">
+        <section class="my-5">
+
+            <div class="row border border-dark rounded">
+                <div class="col-md-4 mb-4 mb-md-0 ">
+                    <div class="view zoom z-depth-2 rounded">
+                        <img class="img-fluid w-100" src='{{ product.image.url }}'
+                             alt="Sample">
+
+                    </div>
+                    <div class="col text-center bg-info border border-dark rounded mt-2">
+                        Available: {{ product.store_number }}
+                    </div>
+
+                </div>
+                <div class="col-md-4 mt-2">
+
+                    <h4><b><i>{{ product.name }}</i></b></h4>
+                    <h6 class="mb-2 text-muted text-uppercase ">Category({{ product.category_id }})</h6>
+                    <h3><span
+                            class="mr-1"><strong>{{ product.productprice.monetary_unit }}{{ product.productprice.amount }}</strong></span>
+                    </h3>
+
+                    <hr>
+                    <div class="table-responsive mb-2 ">
+                        <table class="table table-sm table-borderless">
+                            <tbody>
+                            <tr>
+                                <td class="pl-0 pb-0 w-25">Quantity</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-0">
+                                    <div class="def-number-input number-input safari_only mb-0 ">
+                                        <form action="" class="d-flex justify-content-between">
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                            <button type="submit" class="btn btn-success">
+                                                <i class="fa fa-shopping-cart"></i> add to cart
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>
+                    <h3>Product Info</h3>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias assumenda corporis delectus
+                    doloribus
+                    earum eum fugiat id itaque laboriosam laudantium nesciunt numquam porro quas quos rem repellat sint
+                    soluta, tempora.lor
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus aperiam architecto at, atque,
+                    corporis cumque exercitationem fuga illo labore nemo nostrum quae, rem soluta suscipit. Assumenda
+                    dolor in maiores!</p>
+                </div>
+                <div class="col-md-12 p-0">
+                    <div class="card border-light  bg-light text-dark ">
+                        <div class="card-header">Properties</div>
+                        <div class="card-body">
+                            <div class="table-responsive table-borderless">
+                                <table class="table table-sm  mb-0">
+                                    <tbody>
+                                    <tr>
+                                        {% for name , value in product.baseproperty_set.all.0.get_fields %}
+                                            <th class="pl-0 w-25" scope="row"><strong>{{ name }}</strong></th>
+                                            <td>{{ value }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+

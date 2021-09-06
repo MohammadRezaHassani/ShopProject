@@ -1,0 +1,20 @@
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.nav-item{
+    font-size: 1.3rem;
+    padding-right: 1rem;
+}
+
+.nav-link{
+    color: #111011 !important;
+
+}
+
+.navbar{
+
+    box-shadow: 1px 1px 5px blue;
+
+}
+

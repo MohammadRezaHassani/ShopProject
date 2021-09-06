@@ -1,0 +1,55 @@
+{% extends 'main.html' %}
+{% block extra_content %}
+    <section id="login">
+        <div class="containert mt-5">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Account Login</h4>
+                        </div>
+                        <div class="card-body">
+{#                            {% if form.non_field_errors %}#}
+{#                                {% for error in form.non_field_errors %}#}
+{#                                    {{ error }}#}
+{#                                {% endfor %}#}
+{#                            {% endif %}#}
+                            <form action="{{ form.success_url }}" method="post">
+                                {% csrf_token %}
+                                {% for field in form %}
+                                    <div class="form-group">
+                                        <label for="email">{{ field.label_tag }}</label>
+                                        {{ field }}
+                                    </div>
+                                {% endfor %}
+                                <input type="submit" value="Login" class="btn btn-primary btn-block">
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+
+
+
+{#<div class="container position-relative " style="height: 100vh;">#}
+{#    <div class="row">#}
+{#        <div class="position-absolute border w-50 bg-light mx rounded" style="margin: auto; display: block;#}
+{#         top: 50%; transform: translate(0, -50%); right: 0; left: 0">#}
+{#            <form action="" method="post" class="col-md-6 offset-3 form-group ">#}
+{#                <h3 class="text-center"> Login</h3>#}
+{#                {% csrf_token %}#}
+{#                {{ form.as_p }}#}
+{#                <div style="display: flex ;flex-flow: row-reverse; align-items: center">#}
+{#                    <a href="#"> register</a>#}
+{#                </div>#}
+{#                <input type="submit" class="btn btn-success rounded">#}
+{#            </form>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}

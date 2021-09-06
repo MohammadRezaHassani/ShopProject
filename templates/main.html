@@ -1,0 +1,52 @@
+{% extends 'shared/main_navbar.html' %}
+{% load static %}
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'product/product_ribbon.css' %}">
+{% endblock %}
+{% block extra_content %}
+    <div class="container mt-5 ">
+        <div class="row justify-content-center ">
+            {% for product in products %}
+                <div class="col-sm-6 col-md-4 col-lg-3 mt-2 " style="box-sizing: border-box">
+                    <div class="card ">
+                        {% if product.store_number >= 5 %}
+                            <div class="ribbon "><span> available</span></div>
+                        {% elif product.store_number > 0 and product.store_number < 5 %}
+                            <div class="ribbon  blue"><span> lessThan 5</span></div>
+                        {% else %}
+                            <div class="ribbon  red"><span> Finished</span></div>
+                        {% endif %}
+                        <div class="embed-responsive embed-responsive-1by1">
+                            <img alt="Card image cap" class="card-img-top embed-responsive-item"
+                                 src="{{ product.image.url }}"
+                                 style="object-fit: contain">
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                            <p class="card-title mb-0 overflow-hidden"><i><b>{{ product.name|truncatechars:25 }}</b></i></p>
+
+                        </div>
+                        <div>
+                            <p class="card-text text-secondary ">{{ product.category_id }}</p>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center border-success ">
+                            <div>
+                                <h3 class="card-title text-success mb-0 "><span class="align-top">
+                                    {{ product.productprice.monetary_unit.currency_name }}
+                                    {{ product.productprice.amount }}</span></h3>
+                            </div>
+
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div>
+                                <a href="{% url "product:product_page" product.name %}" class="btn btn-primary mt-3">Product Page</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+
+
